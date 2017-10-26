@@ -1,5 +1,10 @@
 package com.baciu.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,5 +57,20 @@ public class PlaceController {
 	@DeleteMapping("places/{id}")
 	public void deletePlace(@PathVariable("id") int id) {
 		placeRepository.delete(id);
+	}
+	
+	@GetMapping("placeImage/{imageName:.+}")
+	public byte[] getPlaceImage(@PathVariable("imageName") String imageName) {
+		Path path = Paths.get("uploads/placeImages");
+		File file = new File(path + "/" + imageName);
+		byte[] image;
+		try {
+			image = Files.readAllBytes(file.toPath());
+		} catch (IOException e) {
+			e.printStackTrace();
+			image = null;
+		}
+		
+		return image;
 	}
 }

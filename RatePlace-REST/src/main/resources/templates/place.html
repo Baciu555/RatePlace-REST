@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>Oceń miejsce</title>
+	<link rel="stylesheet" href="../css/bootstrap-3.3.7-dist/css/bootstrap.css" />
+	<link rel="stylesheet" href="../css/bootstrap-3.3.7-dist/css/style.css" />
+</head>
+<body>
+
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/index">Strona główna</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li><a href="/addPlace">Dodaj Miejsce</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="/login">Zaloguj sie</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="/logout">Wyloguj</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="/account">Konto</a></li>
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+	</nav>
+
+	<main>
+
+
+	<div class="container">
+		<div class="map-wrapper">
+			<div id="map"></div>
+		</div>
+		<div class="panel-group place-details">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h2></h2>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+						
+							<div id="image">
+								<img class="img-responsive" src=""/>
+							</div>
+							<div id="description">
+								<p>
+									Opis: <span></span>
+								</p>
+							</div>
+							<div id="type">
+								<p>
+									Typ: <span></span>
+								</p>
+							</div>
+							<div id="avg_grade">
+								<p>
+									Średnia ocena: <span></span>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<h3 class="center">Opinie</h3>
+
+		<p class="center">Miejsce
+			zostało jeszcze ocenione</p>
+
+		<p class="center">
+			Aby ocenic miejsce musisz sie <a href="">zalogowac</a>
+		</p>
+
+		<form id="opinionForm" method="post">
+
+			<span class="bg-danger"></span>
+
+			<div class="form-group">
+				<label for="place-name">Ocena:</label> <select class="form-control" id="type">
+					<option value="5">5</option>
+					<option value="4">4</option>
+					<option value="3">3</option>
+					<option value="2">2</option>
+					<option value="1">1</option>
+				</select>
+			</div>
+
+			<div class="form-group">
+				<label for="description">Opis:</label>
+				<textarea rows="6" cols="20" class="form-control" id="description"></textarea>
+				<p class="bg-danger"></p>
+			</div>
+
+			<button type="submit" class="btn btn-primary" id="register-submit">Wyślij</button>
+			<p class="bg-success"></p>
+		</form>
+
+
+
+
+		<div class="media comment-section">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 place-opinion">
+					<div class="row">
+					
+						<div class="col-xs-0 col-sm-1 col-md-1">
+							<img id="avatar" class="img-responsive"/>
+						</div>
+						<div class="col-xs-6 col-sm-5 col-md-5">
+							<span class="thread-name">Autor: <a href=""><span></span></a></span>
+						</div>
+						<div class="col-xs-6 col-sm-6 col-md-6">
+							<span class="thread-points pull-right"></span>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-6">
+							<span>Ocena: <span></span></span>
+						</div>
+						<div class="col-xs-12 col-sm-11 col-md-11">
+							<p class="thread-preview"></p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<hr></hr>
+		</div>
+	</div>
+	</main>
+
+	<footer class="footer">
+		<div class="container">
+			<span class="text-muted">Wojciech Bać © 2017</span>
+		</div>
+	</footer>
+
+<script>
+	var map;
+	function initMap() {
+		var center = {
+			lat : 50.0379308,
+			lng : 22.0023498
+		};
+		map = new google.maps.Map(document.getElementById('map'), {
+			zoom : 15,
+			center : center,
+			minZoom : 4
+		});
+	}
+	</script>
+	<script src="../js/jquery-3.1.1.min.js"></script>
+	<script src="../css/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+	<script async="async" defer="defer"
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAFRG4nmWUTnmG61UhiNBcKo5kIs44P9Y&amp;callback=initMap">
+		
+	</script>
+</body>
+</html>

@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @ComponentScan
 @EntityScan
-@EnableJpaRepositories("com.baciu.repository")
+@EnableJpaRepositories
 @SpringBootApplication
 public class RatePlace {
 
